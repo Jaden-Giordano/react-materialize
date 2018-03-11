@@ -24,6 +24,16 @@ class Navbar extends Component {
     );
   }
 
+  renderExtended () {
+    return (
+      <div className='nav-content'>
+        <ul className='tabs tabs-transparent'>
+          {this.props.extended}
+        </ul>
+      </div>
+    );
+  }
+
   render () {
     const {
       brand,
@@ -32,6 +42,7 @@ class Navbar extends Component {
       left,
       right,
       href,
+      extended,
       ...other
     } = this.props;
 
@@ -60,6 +71,7 @@ class Navbar extends Component {
               <Icon>view_headline</Icon>
             </a>
           </Col>
+          {extended ? this.renderExtended() : ''}
         </div>
       </nav>
     );
@@ -78,6 +90,7 @@ Navbar.propTypes = {
   className: PropTypes.string,
   left: PropTypes.bool,
   right: PropTypes.bool,
+  extended: PropTypes.node,
   href: PropTypes.string,
   /**
    * Makes the navbar fixed
