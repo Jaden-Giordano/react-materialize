@@ -36,4 +36,12 @@ describe('<Navbar />', () => {
     wrapper = shallow(<Navbar fixed />);
     expect(wrapper.hasClass('navbar-fixed')).to.eq(true);
   });
+
+  it('uses extended', () => {
+    const extendedNode = <li className='tab'><a href='#test'>Test</a></li>;
+
+    wrapper = mount(<Navbar extended={extendedNode} />);
+    expect(wrapper.find('.nav-content')
+      .contains(<ul className='tabs tabs-transparent'>{extendedNode}</ul>)).to.equal(true);
+  });
 });
